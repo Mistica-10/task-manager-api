@@ -14,7 +14,7 @@ A Spring Boot REST API for managing tasks with CRUD operations and status-based 
 - Java
 - Spring Boot
 - Spring Data JPA
-- H2 Database
+- Mysql Database
 - REST API
 
 📌 API Endpoints
@@ -39,6 +39,8 @@ A Spring Boot REST API for managing tasks with CRUD operations and status-based 
 
 - API tested using Postman
 - Supports status filtering
+- JWT based authentication
+- Role-based access control(USER-View only,ADMIN-Create and view)
 
 📈 Future Improvements
 
