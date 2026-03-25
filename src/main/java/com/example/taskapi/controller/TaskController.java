@@ -1,4 +1,5 @@
 package com.example.taskapi.controller;
+import com.example.taskapi.dto.ApiResponse;
 import com.example.taskapi.model.Task;
 import com.example.taskapi.model.TaskStatus;
 import com.example.taskapi.service.TaskService;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
+
+
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -16,13 +19,13 @@ public class TaskController {
     }
     //get all tasks
     @GetMapping
-    public List<Task> getAllTasks(){
-        return taskService.getAllTasks();
+    public ApiResponse<List<Task>> getTasks(){
+        return new ApiResponse<>("success","Tasks fetched successfully",taskService.getAllTasks());
     }
     //create task
     @PostMapping
-    public Task createTask(@Valid @RequestBody Task task){
-        return taskService.createTask(task);
+    public ApiResponse<Task> createTask(@RequestBody Task task){
+        return new ApiResponse<>("success","Tasks created successfully",taskService.createTask(task));
     }
     //get task by ID
     @GetMapping("/{id}")
@@ -49,4 +52,5 @@ public class TaskController {
     public Page<Task>getTasks(Pageable pageable){
         return taskService.getTasks(pageable);
     }
+
 }
